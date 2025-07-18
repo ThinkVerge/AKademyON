@@ -97,7 +97,7 @@ function afiseazaCursuri() {
       </div>
       <h3>${curs.titlu}</h3>
       ${curs.titlu.toUpperCase().includes('MEDIUM') ? '<div style="height:1.5rem;"></div>' : ''}
-      <div class="pret">${curs.pret}</div>
+      ${(curs.id !== 1 && curs.id !== 2) ? `<div class="pret">${curs.pret}</div>` : '<div style="height:1.5rem;"></div>'}
       <p class="curs-desc">${curs.descriere}</p>
       <a href="${pageLink}" class="pachet-btn" style="width:85%;margin:0 auto;display:block;margin-top:0.5rem;">${curs.actiune}</a>
     `;
@@ -135,3 +135,4 @@ document.querySelector('.contact-form').onsubmit = function(e) {
   alert('Mesaj trimis! Vă vom contacta în curând.');
   this.reset();
 }
+
