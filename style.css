@@ -537,22 +537,31 @@ footer {
   letter-spacing: 0.01em;
 }
 @media (max-width: 700px) {
+  body, .getpdf-body {
+    font-size: 1.08rem;
+    padding: 0;
+  }
+  main, .getpdf-center {
+    padding: 0.5rem 0.1rem;
+  }
   .cursuri-lista {
     flex-direction: column;
     gap: 1.2rem;
     align-items: center;
   }
   .curs-card {
-    width: 98vw;
+    width: 99vw;
     min-width: unset;
     max-width: 99vw;
     padding: 0 0 1.2rem 0;
+    margin-bottom: 1.2rem;
   }
   .curs-img-wrap {
-    height: 150px;
+    height: 140px;
   }
   .curs-img {
     max-width: 100vw;
+    border-radius: 10px 10px 0 0;
   }
   .pachet-card {
     padding: 1.1rem 0.3rem 1.1rem 0.3rem;
@@ -565,8 +574,9 @@ footer {
     border-radius: 10px;
   }
   .pachet-title {
-    font-size: 1.18rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
+    text-align: center;
   }
   .pachet-desc {
     font-size: 1.01rem;
@@ -588,29 +598,74 @@ footer {
   }
   .contact-title {
     font-size: 1.3rem;
+    text-align: center;
   }
   .contact-form input, .contact-form textarea {
     font-size: 1.01rem;
     padding: 0.7rem;
+    width: 100%;
   }
   .contact-form button {
     font-size: 1.08rem;
     padding: 0.7rem 0;
+    width: 100%;
   }
   .social-links {
     gap: 1rem;
+    justify-content: center;
   }
-  nav {
-    flex-direction: column;
-    gap: 1.1rem;
-    padding: 0.7rem 0.5rem;
+  .getpdf-form {
+    padding: 1.1rem 0.3rem 1.1rem 0.3rem;
     max-width: 99vw;
+    border-radius: 10px;
+    gap: 1.1rem;
   }
-  nav a {
-    font-size: 1.08rem;
-    padding: 0.7rem 0.5rem;
-    width: 100%;
+  .getpdf-title {
+    font-size: 1.15rem;
     text-align: center;
+  }
+  .getpdf-form input[type="text"],
+  .getpdf-form input[type="email"],
+  .getpdf-btn {
+    width: 99vw;
+    max-width: 99vw;
+    font-size: 1.08rem;
+    padding: 1rem 0.2rem;
+    border-radius: 2rem;
+  }
+  .getpdf-btn {
+    font-size: 1.13rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+  }
+  .getpdf-checkbox {
+    font-size: 1.01rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .getpdf-privacy {
+    font-size: 1.01rem;
+    margin-top: 1.1rem;
+  }
+  .despre-section {
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+    max-width: 99vw;
+    border-radius: 10px;
+  }
+  .despre-container {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .avatar {
+    margin-bottom: 1rem;
+  }
+  .despre-text h2 {
+    font-size: 1.15rem;
+    text-align: left;
+  }
+  .despre-text p {
+    font-size: 1.01rem;
   }
 }
 @media (max-width: 400px) {
