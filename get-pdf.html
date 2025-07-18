@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Obține ghidul gratuit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icon/favi.png">
+</head>
+<body class="getpdf-body">
+  <main class="getpdf-center">
+    <form class="getpdf-form">
+      <h2 class="getpdf-title">Obține ghidul acum</h2>
+      <input type="text" name="nume" placeholder="Numele tău" required>
+      <input type="email" name="email" placeholder="Emailul tău" required>
+      <label class="getpdf-checkbox">
+        <input type="checkbox" required>
+        <span class="getpdf-checkmark"></span>
+        <span class="getpdf-terms">I understand and agree to the <b>Terms & Conditions</b>.</span>
+      </label>
+      <button type="submit" class="getpdf-btn">Obține acum ghidul</button>
+      <div id="confirm" style="display:none;margin-top:1.2rem;color:#2563eb;font-weight:600;"></div>
+      <a href="#" class="getpdf-privacy">Privacy Policy</a>
+    </form>
+  </main>
+  <script>
+    document.querySelector('.getpdf-form').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = this.email.value;
+      const resp = await fetch('http://localhost:3000/trimite-pdf', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email })
+      });
+      if (resp.ok) {
+        document.getElementById('confirm').innerText = 'PDF-ul a fost trimis pe email!';
+        document.getElementById('confirm').style.display = 'block';
+        this.querySelector('button').style.display = 'none';
+      } else {
+        document.getElementById('confirm').innerText = 'A apărut o eroare. Încearcă din nou!';
+        document.getElementById('confirm').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html> 
