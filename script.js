@@ -96,10 +96,10 @@ function afiseazaCursuri() {
         ${isGratuit ? '<span class="badge-gratuit">Gratuit</span>' : ''}
       </div>
       <h3>${curs.titlu}</h3>
-      ${curs.titlu.toUpperCase().includes('MEDIUM') ? '<div style="height:1.5rem;"></div>' : ''}
-      ${(curs.id !== 1 && curs.id !== 2) ? `<div class="pret">${curs.pret}</div>` : '<div style="height:1.5rem;"></div>'}
+      ${curs.titlu.toUpperCase().includes('MEDIUM') ? '<div class="curs-card-spacer"></div>' : ''}
+      ${(curs.id !== 1 && curs.id !== 2) ? `<div class="pret">${curs.pret}</div>` : '<div class="curs-card-spacer"></div>'}
       <p class="curs-desc">${curs.descriere}</p>
-      <a href="${pageLink}" class="pachet-btn" style="width:85%;margin:0 auto;display:block;margin-top:0.5rem;">${curs.actiune}</a>
+      <a href="${pageLink}" class="pachet-btn curs-card-actiune-btn">${curs.actiune}</a>
     `;
     lista.appendChild(card);
   });
@@ -112,7 +112,7 @@ window.deschideModal = function(id) {
   const modal = document.getElementById('modal');
   const body = document.getElementById('modal-body');
   body.innerHTML = `
-    <img src="${curs.imagine}" alt="${curs.titlu}" class="curs-img" style="max-width:120px;margin-bottom:1rem;">
+    <img src="${curs.imagine}" alt="${curs.titlu}" class="curs-img modal-img">
     <h3>${curs.titlu}</h3>
     <p>${curs.descriere}</p>
     <div class="pret">${curs.pret}</div>
@@ -130,9 +130,24 @@ window.cumparaCurs = function(titlu) {
   body.innerHTML = `<h3>Felicitări!</h3><p>Ai achiziționat <b>${titlu}</b>.<br>Vei primi detalii pe email.</p>`;
 }
 
-document.querySelector('.contact-form').onsubmit = function(e) {
-  e.preventDefault();
-  alert('Mesaj trimis! Vă vom contacta în curând.');
-  this.reset();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+  }
+
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.onsubmit = function(e) {
+      e.preventDefault();
+      alert('Mesaj trimis! Vă vom contacta în curând.');
+      this.reset();
+    }
+  }
+});
 
