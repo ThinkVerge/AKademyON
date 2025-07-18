@@ -1,4 +1,3 @@
-
 const cursuri = [
   {
     id: 1,
@@ -11,11 +10,11 @@ const cursuri = [
   },
   {
     id: 2,
-    titlu: "Creeaza gratuit cont monetizat Stan și începe sa v",
+    titlu: "Creeaza gratuit cont monetizat Stan și începe să vinzi",
     pret: "Gratuit",
     descriere: "Ghid pas cu pas pentru cont monetizat pe Stan.",
     imagine: "Icon/cont-monetizat.jpeg",
-    actiune: "Află mai multe",
+    actiune: "Creează aici",
     pdf: "pdf/cont-monetizat.pdf"
   },
   {
@@ -72,6 +71,25 @@ function afiseazaCursuri() {
     const isGratuit = curs.pret.toLowerCase() === 'gratuit';
     const card = document.createElement('div');
     card.className = 'curs-card' + (isGratuit ? ' gratuit' : '');
+    let pageLink = '';
+    switch (curs.id) {
+      case 1:
+        pageLink = 'ghid-gratuit.html'; break;
+      case 2:
+        pageLink = 'https://www.stan.store/?ref=Ecaterinadigitalcom&referrer=https%3A%2F%2Fadmin.stan.store%2F&utm_source=stan-store-link&utm_medium=redirect&utm_campaign=storefront'; break;
+      case 3:
+        pageLink = 'biblioteca-digitala.html'; break;
+      case 4:
+        pageLink = 'pachet-basic.html'; break;
+      case 5:
+        pageLink = 'pachet-medium.html'; break;
+      case 6:
+        pageLink = 'pachet-vip.html'; break;
+      case 7:
+        pageLink = 'consultatie.html'; break;
+      default:
+        pageLink = '#';
+    }
     card.innerHTML = `
       <div class="curs-img-wrap">
         <img src="${curs.imagine}" alt="${curs.titlu}" class="curs-img">
@@ -81,7 +99,7 @@ function afiseazaCursuri() {
       ${curs.titlu.toUpperCase().includes('MEDIUM') ? '<div style="height:1.5rem;"></div>' : ''}
       <div class="pret">${curs.pret}</div>
       <p class="curs-desc">${curs.descriere}</p>
-      ${curs.titlu.includes('BASIC') ? `<a href="pachet-basic.html" class="pachet-btn" style="width:85%;margin:0 auto;display:block;margin-top:0.5rem;">${curs.actiune}</a>` : curs.titlu.toUpperCase().includes('GHID GRATUIT') ? `<a href="ghid-gratuit.html" class="pachet-btn" style="width:85%;margin:0 auto;display:block;margin-top:0.5rem;">${curs.actiune}</a>` : `<button onclick="deschideModal(${curs.id})">${curs.actiune}</button>`}
+      <a href="${pageLink}" class="pachet-btn" style="width:85%;margin:0 auto;display:block;margin-top:0.5rem;">${curs.actiune}</a>
     `;
     lista.appendChild(card);
   });
